@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictBox = new System.Windows.Forms.PictureBox();
             this.chkStretch = new System.Windows.Forms.CheckBox();
+            this.pictBox = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSetBackground1 = new System.Windows.Forms.Button();
-            this.btnSetBackground2 = new System.Windows.Forms.Button();
-            this.btnSetBackground3 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnBackground = new System.Windows.Forms.Button();
+            this.btnClearPicture = new System.Windows.Forms.Button();
+            this.btnShowPicture = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictBox)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -58,6 +60,19 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 461);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // chkStretch
+            // 
+            this.chkStretch.AutoSize = true;
+            this.chkStretch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkStretch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkStretch.Location = new System.Drawing.Point(3, 417);
+            this.chkStretch.Name = "chkStretch";
+            this.chkStretch.Size = new System.Drawing.Size(111, 41);
+            this.chkStretch.TabIndex = 0;
+            this.chkStretch.Text = "Stretch";
+            this.chkStretch.UseVisualStyleBackColor = true;
+            this.chkStretch.CheckedChanged += new System.EventHandler(this.chkStretch_CheckedChanged);
+            // 
             // pictBox
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.pictBox, 2);
@@ -68,64 +83,68 @@
             this.pictBox.TabIndex = 0;
             this.pictBox.TabStop = false;
             // 
-            // chkStretch
-            // 
-            this.chkStretch.AutoSize = true;
-            this.chkStretch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkStretch.Location = new System.Drawing.Point(3, 417);
-            this.chkStretch.Name = "chkStretch";
-            this.chkStretch.Size = new System.Drawing.Size(111, 41);
-            this.chkStretch.TabIndex = 0;
-            this.chkStretch.Text = "Stretch";
-            this.chkStretch.UseVisualStyleBackColor = true;
-            // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btnClose);
-            this.flowLayoutPanel1.Controls.Add(this.btnSetBackground1);
-            this.flowLayoutPanel1.Controls.Add(this.btnSetBackground2);
-            this.flowLayoutPanel1.Controls.Add(this.btnSetBackground3);
+            this.flowLayoutPanel1.Controls.Add(this.btnCancel);
+            this.flowLayoutPanel1.Controls.Add(this.btnBackground);
+            this.flowLayoutPanel1.Controls.Add(this.btnClearPicture);
+            this.flowLayoutPanel1.Controls.Add(this.btnShowPicture);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(120, 417);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(661, 41);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
-            // btnClose
+            // btnCancel
             // 
-            this.btnClose.Location = new System.Drawing.Point(3, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(110, 35);
-            this.btnClose.TabIndex = 1;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(3, 3);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(110, 35);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnSetBackground1
+            // btnBackground
             // 
-            this.btnSetBackground1.Location = new System.Drawing.Point(119, 3);
-            this.btnSetBackground1.Name = "btnSetBackground1";
-            this.btnSetBackground1.Size = new System.Drawing.Size(175, 35);
-            this.btnSetBackground1.TabIndex = 2;
-            this.btnSetBackground1.Text = "Set Background";
-            this.btnSetBackground1.UseVisualStyleBackColor = true;
+            this.btnBackground.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackground.Location = new System.Drawing.Point(119, 3);
+            this.btnBackground.Name = "btnBackground";
+            this.btnBackground.Size = new System.Drawing.Size(175, 35);
+            this.btnBackground.TabIndex = 2;
+            this.btnBackground.Text = "Background";
+            this.btnBackground.UseVisualStyleBackColor = true;
+            this.btnBackground.Click += new System.EventHandler(this.btnBackground_Click);
             // 
-            // btnSetBackground2
+            // btnClearPicture
             // 
-            this.btnSetBackground2.Location = new System.Drawing.Point(300, 3);
-            this.btnSetBackground2.Name = "btnSetBackground2";
-            this.btnSetBackground2.Size = new System.Drawing.Size(175, 35);
-            this.btnSetBackground2.TabIndex = 3;
-            this.btnSetBackground2.Text = "Set Background";
-            this.btnSetBackground2.UseVisualStyleBackColor = true;
+            this.btnClearPicture.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearPicture.Location = new System.Drawing.Point(300, 3);
+            this.btnClearPicture.Name = "btnClearPicture";
+            this.btnClearPicture.Size = new System.Drawing.Size(175, 35);
+            this.btnClearPicture.TabIndex = 3;
+            this.btnClearPicture.Text = "Clear Picture";
+            this.btnClearPicture.UseVisualStyleBackColor = true;
+            this.btnClearPicture.Click += new System.EventHandler(this.btnClearPicture_Click);
             // 
-            // btnSetBackground3
+            // btnShowPicture
             // 
-            this.btnSetBackground3.Location = new System.Drawing.Point(481, 3);
-            this.btnSetBackground3.Name = "btnSetBackground3";
-            this.btnSetBackground3.Size = new System.Drawing.Size(175, 35);
-            this.btnSetBackground3.TabIndex = 4;
-            this.btnSetBackground3.Text = "Set Background";
-            this.btnSetBackground3.UseVisualStyleBackColor = true;
+            this.btnShowPicture.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowPicture.Location = new System.Drawing.Point(481, 3);
+            this.btnShowPicture.Name = "btnShowPicture";
+            this.btnShowPicture.Size = new System.Drawing.Size(175, 35);
+            this.btnShowPicture.TabIndex = 4;
+            this.btnShowPicture.Text = "Show Picture";
+            this.btnShowPicture.UseVisualStyleBackColor = true;
+            this.btnShowPicture.Click += new System.EventHandler(this.btnShowPicture_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|BMP Files (*.bmp)|*.bmp|All file" +
+    "s (*.*)|*.*";
+            this.openFileDialog1.Title = "Select a picture file";
             // 
             // Form1
             // 
@@ -133,6 +152,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Picture Viewer";
@@ -150,10 +170,12 @@
         private System.Windows.Forms.PictureBox pictBox;
         private System.Windows.Forms.CheckBox chkStretch;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnSetBackground1;
-        private System.Windows.Forms.Button btnSetBackground2;
-        private System.Windows.Forms.Button btnSetBackground3;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnBackground;
+        private System.Windows.Forms.Button btnClearPicture;
+        private System.Windows.Forms.Button btnShowPicture;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
